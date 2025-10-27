@@ -1,0 +1,7 @@
+{
+  "listen_port": 50051,
+  "use_grpc": false,
+  "optimize_store_path": "C:\\XBridge\\optimize_store",
+  "max_concurrent_jobs_per_share": 2,
+  "auth_tokens": ["replace_with_secure_token_1"]
+}

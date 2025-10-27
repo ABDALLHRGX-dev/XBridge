@@ -1,0 +1,62 @@
+<Page
+    x:Class="XBridge.Host.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:XBridge.Host"
+    Background="White">
+    <Grid Padding="12">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2*" />
+            <ColumnDefinition Width="3*" />
+        </Grid.ColumnDefinitions>
+        <StackPanel Grid.Column="0" Spacing="8">
+            <TextBlock Text="Connected Devices" FontSize="18" FontWeight="SemiBold" />
+            <ListView x:Name="DevicesList" SelectionChanged="DevicesList_SelectionChanged" Height="600">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal" Padding="6">
+                            <TextBlock Text="{Binding DeviceName}" Width="160" />
+                            <TextBlock Text="{Binding DeviceSerial}" Width="180" />
+                            <TextBlock Text="{Binding AssignedSharePercent, StringFormat='{}{0:F0}%'}" />
+                        </StackPanel>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <StackPanel Orientation="Horizontal" Spacing="8">
+                <Button x:Name="StartListenerBtn" Content="Start Listener" Click="StartListenerBtn_Click" />
+                <Button x:Name="StopListenerBtn" Content="Stop Listener" Click="StopListenerBtn_Click" IsEnabled="False" />
+                <Button x:Name="ForceGlobalOptimizeBtn" Content="Start Global Optimize" Click="ForceGlobalOptimizeBtn_Click" />
+            </StackPanel>
+        </StackPanel>
+        <StackPanel Grid.Column="1" Spacing="8">
+            <TextBlock Text="Device Details" FontSize="18" FontWeight="SemiBold" />
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <StackPanel Orientation="Horizontal" Spacing="8">
+                    <TextBlock Text="Name:" Width="80" />
+                    <TextBlock x:Name="DetailName" />
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Spacing="8" Grid.Row="1">
+                    <TextBlock Text="Serial:" Width="80" />
+                    <TextBlock x:Name="DetailSerial" />
+                </StackPanel>
+                <StackPanel Grid.Row="2" Spacing="8">
+                    <TextBlock Text="Optimize Version:" />
+                    <TextBlock x:Name="DetailOptimizeVersion" />
+                    <TextBlock Text="Last Activity:" />
+                    <TextBlock x:Name="DetailLastSeen" />
+                    <TextBlock Text="Microbenchmark Results:" />
+                    <TextBox x:Name="DetailMicrobench" AcceptsReturn="True" Height="220" IsReadOnly="True" TextWrapping="Wrap" />
+                    <StackPanel Orientation="Horizontal" Spacing="8">
+                        <Button x:Name="ForceOptimizeBtn" Content="Force Optimize" Click="ForceOptimizeBtn_Click" />
+                        <Button x:Name="SendPingBtn" Content="Send Ping" Click="SendPingBtn_Click" />
+                    </StackPanel>
+                </StackPanel>
+            </Grid>
+        </StackPanel>
+    </Grid>
+</Page>

@@ -1,0 +1,37 @@
+syntax = "proto3";
+
+
+package xbridge;
+
+
+message HelloRequest {
+string device_serial = 1;
+string device_name = 2;
+string game_full_version = 3;
+}
+
+
+message HelloResponse {
+string status = 1;
+}
+
+
+message WorkRequest {
+string device_serial = 1;
+string task_id = 2;
+string task_type = 3;
+string payload = 4;
+int32 timeout_ms = 5;
+}
+
+
+message WorkResponse {
+string status = 1;
+string result = 2;
+}
+
+
+service XBridgeService {
+rpc SendHello(HelloRequest) returns (HelloResponse);
+rpc SendWork(WorkRequest) returns (WorkResponse);
+}

@@ -1,0 +1,7 @@
+cmake_minimum_required(VERSION 3.10)
+project(xbridge_shared_ue5 LANGUAGES C CXX)
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_POSITION_INDEPENDENT_CODE ON)
+add_library(xbridge_shared SHARED src/plugin.cpp src/logger.cpp)
+target_include_directories(xbridge_shared PUBLIC ${CMAKE_SOURCE_DIR}/include)
+set_target_properties(xbridge_shared PROPERTIES OUTPUT_NAME "xbridge_shared")
